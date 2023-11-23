@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
 
   static List<double> barrierX = [1, 1 + 1.5, 1 + 2.0, 2 + 3.5];
   static double barrierWidth = 0.25;
-  List<List<double>> barrierHieght = [
+  List<List<double>> barrierHeight = [
     [0.6, 0.4],
     [0.3, 0.7],
     [0.5, 0.5],
@@ -117,6 +117,9 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         barrierX[i] -= 0.03;
       });
+      if (barrierX[i] < -1.5) {
+        barrierX[i] += 4.5;
+      }
     }
   }
 
@@ -130,14 +133,35 @@ class _HomePageState extends State<HomePage> {
     for(int i=0;i<barrierX.length; i++) {
       if (barrierX[i] <= birdWidth &&
           barrierX[i] + barrierWidth >= -birdWidth &&
-          (birdYaxis <= -1 + barrierHieght[i][0] ||
-              birdYaxis + birdHeight >= 1 - barrierHieght[i][1])) {
+          (birdYaxis <= -1 + barrierHeight[i][0] ||
+              birdYaxis + birdHeight >= 1 - barrierHeight[i][1])) {
         return true;
       }
     }
       return false;
 
   }
+
+  List<Widget> generateBarrierWidgets(int index) {
+    return [
+      // top barrier
+      MyBarrier(
+        barrierX: barrierX[index],
+        barrierWidth: barrierWidth,
+        barrierHeight: barrierHeight[index][0],
+        isThisBottomBarrier: false,
+      ),
+      // bottom barrier
+      MyBarrier(
+        barrierX: barrierX[index],
+        barrierWidth: barrierWidth,
+        barrierHeight: barrierHeight[index][1],
+        isThisBottomBarrier: true,
+      ),
+    ];
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -170,64 +194,65 @@ class _HomePageState extends State<HomePage> {
                       ),
                       // MyCoverScreen(gameHasStarted:gameHasStarted),
 
-
-                      //top barrier 0
-                      MyBarrier(
-                          barrierX:barrierX[0],
-                          barrierWidth: barrierWidth,
-                          barrierHeight: barrierHieght[0][0],
-                          isThisBottomBarrier:false,
-                      ),
-                      //bottom barrier 0
-                      MyBarrier(
-                        barrierX:barrierX[0],
-                        barrierWidth: barrierWidth,
-                        barrierHeight: barrierHieght[0][1],
-                        isThisBottomBarrier:true,
-                      ),
-                      //top 1
-                      MyBarrier(
-                        barrierX:barrierX[1],
-                        barrierWidth: barrierWidth,
-                        barrierHeight: barrierHieght[1][0],
-                        isThisBottomBarrier:false,
-                      ),
-                      //bottom 1
-                      MyBarrier(
-                        barrierX:barrierX[1],
-                        barrierWidth: barrierWidth,
-                        barrierHeight: barrierHieght[1][1],
-                        isThisBottomBarrier:true,
-                      ),
-                      //top 2
-                      MyBarrier(
-                        barrierX:barrierX[2],
-                        barrierWidth: barrierWidth,
-                        barrierHeight: barrierHieght[2][0],
-                        isThisBottomBarrier:false,
-                      ),
-
-                      //bottom 2
-                      MyBarrier(
-                        barrierX:barrierX[2],
-                        barrierWidth: barrierWidth,
-                        barrierHeight: barrierHieght[2][1],
-                        isThisBottomBarrier:true,
-                      ),
-                      //top 3
-                      MyBarrier(
-                        barrierX:barrierX[3],
-                        barrierWidth: barrierWidth,
-                        barrierHeight: barrierHieght[3][0],
-                        isThisBottomBarrier:false,
-                      ),
-                      //bottom 3
-                      MyBarrier(
-                        barrierX:barrierX[3],
-                        barrierWidth: barrierWidth,
-                        barrierHeight: barrierHieght[3][1],
-                        isThisBottomBarrier:true,
-                      ),
+                      for(int i=0;i<barrierX.length;i++)
+                      ...generateBarrierWidgets(i),
+                      // //top barrier 0
+                      // MyBarrier(
+                      //     barrierX:barrierX[0],
+                      //     barrierWidth: barrierWidth,
+                      //     barrierHeight: barrierHieght[0][0],
+                      //     isThisBottomBarrier:false,
+                      // ),
+                      // //bottom barrier 0
+                      // MyBarrier(
+                      //   barrierX:barrierX[0],
+                      //   barrierWidth: barrierWidth,
+                      //   barrierHeight: barrierHieght[0][1],
+                      //   isThisBottomBarrier:true,
+                      // ),
+                      // //top 1
+                      // MyBarrier(
+                      //   barrierX:barrierX[1],
+                      //   barrierWidth: barrierWidth,
+                      //   barrierHeight: barrierHieght[1][0],
+                      //   isThisBottomBarrier:false,
+                      // ),
+                      // //bottom 1
+                      // MyBarrier(
+                      //   barrierX:barrierX[1],
+                      //   barrierWidth: barrierWidth,
+                      //   barrierHeight: barrierHieght[1][1],
+                      //   isThisBottomBarrier:true,
+                      // ),
+                      // //top 2
+                      // MyBarrier(
+                      //   barrierX:barrierX[2],
+                      //   barrierWidth: barrierWidth,
+                      //   barrierHeight: barrierHieght[2][0],
+                      //   isThisBottomBarrier:false,
+                      // ),
+                      //
+                      // //bottom 2
+                      // MyBarrier(
+                      //   barrierX:barrierX[2],
+                      //   barrierWidth: barrierWidth,
+                      //   barrierHeight: barrierHieght[2][1],
+                      //   isThisBottomBarrier:true,
+                      // ),
+                      // //top 3
+                      // MyBarrier(
+                      //   barrierX:barrierX[3],
+                      //   barrierWidth: barrierWidth,
+                      //   barrierHeight: barrierHieght[3][0],
+                      //   isThisBottomBarrier:false,
+                      // ),
+                      // //bottom 3
+                      // MyBarrier(
+                      //   barrierX:barrierX[3],
+                      //   barrierWidth: barrierWidth,
+                      //   barrierHeight: barrierHieght[3][1],
+                      //   isThisBottomBarrier:true,
+                      // ),
                     ],
 
               ),
