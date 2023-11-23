@@ -192,67 +192,11 @@ class _HomePageState extends State<HomePage> {
                             fontSize: 20,
                           ),),
                       ),
-                      // MyCoverScreen(gameHasStarted:gameHasStarted),
+
 
                       for(int i=0;i<barrierX.length;i++)
                       ...generateBarrierWidgets(i),
-                      // //top barrier 0
-                      // MyBarrier(
-                      //     barrierX:barrierX[0],
-                      //     barrierWidth: barrierWidth,
-                      //     barrierHeight: barrierHieght[0][0],
-                      //     isThisBottomBarrier:false,
-                      // ),
-                      // //bottom barrier 0
-                      // MyBarrier(
-                      //   barrierX:barrierX[0],
-                      //   barrierWidth: barrierWidth,
-                      //   barrierHeight: barrierHieght[0][1],
-                      //   isThisBottomBarrier:true,
-                      // ),
-                      // //top 1
-                      // MyBarrier(
-                      //   barrierX:barrierX[1],
-                      //   barrierWidth: barrierWidth,
-                      //   barrierHeight: barrierHieght[1][0],
-                      //   isThisBottomBarrier:false,
-                      // ),
-                      // //bottom 1
-                      // MyBarrier(
-                      //   barrierX:barrierX[1],
-                      //   barrierWidth: barrierWidth,
-                      //   barrierHeight: barrierHieght[1][1],
-                      //   isThisBottomBarrier:true,
-                      // ),
-                      // //top 2
-                      // MyBarrier(
-                      //   barrierX:barrierX[2],
-                      //   barrierWidth: barrierWidth,
-                      //   barrierHeight: barrierHieght[2][0],
-                      //   isThisBottomBarrier:false,
-                      // ),
-                      //
-                      // //bottom 2
-                      // MyBarrier(
-                      //   barrierX:barrierX[2],
-                      //   barrierWidth: barrierWidth,
-                      //   barrierHeight: barrierHieght[2][1],
-                      //   isThisBottomBarrier:true,
-                      // ),
-                      // //top 3
-                      // MyBarrier(
-                      //   barrierX:barrierX[3],
-                      //   barrierWidth: barrierWidth,
-                      //   barrierHeight: barrierHieght[3][0],
-                      //   isThisBottomBarrier:false,
-                      // ),
-                      // //bottom 3
-                      // MyBarrier(
-                      //   barrierX:barrierX[3],
-                      //   barrierWidth: barrierWidth,
-                      //   barrierHeight: barrierHieght[3][1],
-                      //   isThisBottomBarrier:true,
-                      // ),
+
                     ],
 
               ),
@@ -260,8 +204,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
 
-          //   )
-          // ),
+
           Container(
             height: 15,
             color: Colors.green,
